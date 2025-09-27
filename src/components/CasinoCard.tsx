@@ -149,7 +149,6 @@ export function CasinoCard({ casino }: CasinoCardProps) {
 
         <div className="bg-secondary p-6 flex-1 rounded-b-lg md:rounded-r-lg md:rounded-b-none flex flex-col items-center justify-center text-center">
           <p className="text-lg font-bold text-accent">{casino.bonus}</p>
-          <p className="text-lg font-bold text-accent">{casino.bonusTerms}</p>
           <button className="mt-4 w-full rounded-md bg-primary py-3 font-semibold uppercase text-primary-foreground transition-colors hover:bg-primary/90">
             Visit Now
           </button>

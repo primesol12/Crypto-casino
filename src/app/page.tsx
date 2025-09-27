@@ -1,55 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import { Header } from "@/components/Header";
-import { CasinoCard, type Casino } from "@/components/CasinoCard";
+import { type Casino } from "@/components/CasinoCard";
 import casinos from "@/data/casino_cards.json";
+import { Hero, CardsLayout } from "./front-page/index";
 
-const filters = ["Crypto Rating", "Web3 Betting", "Crypto Bonuses", "Anonymous"];
+const ITEMS_PER_PAGE = 6;
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const displayedCasinos = (casinos as Casino[]).filter((casino) => {
-    if (!activeFilter) return true;
-    const groups = casino.filters ?? [];
-    return groups.includes(activeFilter);
-  });
+  const filteredCasinos = useMemo(() => {
+    return (casinos as Casino[]).filter((casino) => {
+      if (!activeFilter) return true;
+      const groups = casino.filters ?? [];
+      return groups.includes(activeFilter);
+    });
+  }, [activeFilter]);
+
+  const totalPages = Math.ceil(filteredCasinos.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const displayedCasinos = filteredCasinos.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filter changes
+  const handleFilterChange = (filter: string | null) => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+    // Smooth scroll to top when filter changes
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+    // Smooth scroll to top when page changes
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div>
       <Header />
-      <main className="container py-8">
-        <h1 className="text-4xl font-bold">
-          Best Crypto Bonus Offers And Promotions
-        </h1>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {["All", ...filters].map((filter) => {
-            const targetFilter = filter === "All" ? null : filter;
-            const isActive = activeFilter === targetFilter;
+      <main>
+        <Hero />
 
-            return (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(targetFilter)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                  isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                }`}
-              >
-                {filter}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 space-y-6">
-          {displayedCasinos.map((casino) => (
-            <CasinoCard key={casino.name} casino={casino} />
-          ))}
-        </div>
+        <CardsLayout
+          casinos={displayedCasinos}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          startIndex={startIndex}
+          endIndex={endIndex}
+          totalCount={filteredCasinos.length}
+          onPageChange={goToPage}
+          activeFilter={activeFilter}
+          onFilterChange={handleFilterChange}
+        />
       </main>
     </div>
   );
