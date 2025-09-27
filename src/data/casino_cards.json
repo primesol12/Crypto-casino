@@ -1,0 +1,189 @@
+[
+  {
+    "name": "Willbet.ai",
+    "logo": "https://placehold.co/80x80/13223d/FFFFFF.webp?text=WillBet",
+    "rating": "New",
+    "tags": [36, 34, 5, 57, 58],
+    "filters": ["Anonymous", "Crypto Bonuses"],
+    "bonus": "100% first deposit bonus up to 1000 USDT",
+    "bonusTerms": "1000 USDT",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "BC.Game",
+    "logo": "https://placehold.co/80x80/0c111f/5eead4.webp?text=BC",
+    "rating": "Top",
+    "tags": [31, 32, 42, 43],
+    "filters": ["Anonymous", "Web3 Betting"],
+    "bonus": "80% first deposit bonus up to 1000$ + 5 free bets",
+    "bonusTerms": "1000$",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "JackBit",
+    "logo": "https://placehold.co/80x80/0c111f/86efac.webp?text=JB",
+    "rating": "9.92",
+    "tags": [44, 45, 46, 47, 48],
+    "filters": ["Anonymous", "Web3 Betting"],
+    "bonus": "3+1 free bets",
+    "bonusTerms": "200$",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Velobet",
+    "logo": "https://placehold.co/80x80/0c111f/facc15.webp?text=VB",
+    "rating": "9.94",
+    "tags": [53, 54, 55, 56],
+    "filters": ["Anonymous", "Crypto Bonuses"],
+    "bonus": "150% first deposit bonus up to 1000€",
+    "bonusTerms": "1000€",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Ybets",
+    "logo": "https://placehold.co/80x80/f10657/ffffff.webp?text=YB",
+    "rating": "9.92",
+    "tags": [32, 51, 52, 36],
+    "filters": ["Anonymous"],
+    "bonus": "200% first deposit bonus up to 2000€",
+    "bonusTerms": "2000€",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Crypto-Games.io",
+    "logo": "https://placehold.co/80x80/111827/d1d5db.webp?text=CG",
+    "rating": "9.87",
+    "tags": [6, 34, 59, 60],
+    "filters": ["Anonymous", "Crypto Bonuses"],
+    "bonus": "100% first deposit bonus up to 10,000 USDT",
+    "bonusTerms": "10,000 USDT",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Duelbits",
+    "logo": "https://placehold.co/80x80/0f172a/22c55e.webp?text=DB",
+    "rating": "9.55",
+    "tags": [31, 32, 61, 45],
+    "filters": ["Anonymous"],
+    "bonus": "100 $ welcome bonus",
+    "bonusTerms": "100 $",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Cryptorino",
+    "logo": "https://placehold.co/80x80/000000/f8fafc.webp?text=CR",
+    "rating": "9.50",
+    "tags": [62, 35, 20, 63],
+    "filters": ["Anonymous", "Crypto Bonuses"],
+    "bonus": "100% first deposit bonus up to 1BTC",
+    "bonusTerms": "1 BTC",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Bets.io",
+    "logo": "https://placehold.co/80x80/0c111f/a855f7.webp?text=BI",
+    "rating": "9.35",
+    "tags": [49, 50, 51, 52],
+    "filters": ["Anonymous","Web3 Betting"],
+    "bonus": "100% up to 1BTC/30,000$ + 100 FS",
+    "bonusTerms": "1 BTC",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Bookmaker.xyz",
+    "logo": "https://placehold.co/80x80/0f172a/f3f4f6.webp?text=BM",
+    "rating": "9.18",
+    "tags": [64, 65, 66, 67],
+    "filters": ["Anonymous"],
+    "bonus": "100% first deposit bonus up to 250 USDT",
+    "bonusTerms": "250 USDT",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Casinok",
+    "logo": "https://placehold.co/80x80/111827/38bdf8.webp?text=CK",
+    "rating": "9.08",
+    "tags": [68, 69, 32, 34],
+    "filters": ["Anonymous", "Crypto Bonuses"],
+    "bonus": "125% first deposit bonus up to 2000$ in freebet",
+    "bonusTerms": "2000$",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Win.Casino",
+    "logo": "https://placehold.co/80x80/15803d/22d3ee.webp?text=WIN",
+    "rating": "9.06",
+    "tags": [32, 49, 35, 52],
+    "filters": ["Anonymous", "Crypto Bonuses"],
+    "bonus": "100% up to 500 € bonus",
+    "bonusTerms": "500 €",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "MostBet",
+    "logo": "https://placehold.co/80x80/1d4ed8/ffffff.webp?text=MB",
+    "rating": "8.94",
+    "tags": [70, 49, 52, 71, 72],
+    "filters": ["Anonymous"],
+    "bonus": "100% up to 300 $ bonus",
+    "bonusTerms": "300 $",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "TrustDice",
+    "logo": "https://placehold.co/80x80/581c87/fcd34d.webp?text=TD",
+    "rating": "8.81",
+    "tags": [73, 45, 61, 49],
+    "filters": ["Anonymous"],
+    "bonus": "200% first deposit bonus up to 1 BTC",
+    "bonusTerms": "1 BTC",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Wazbee",
+    "logo": "https://placehold.co/80x80/581c87/f97316.webp?text=WZ",
+    "rating": "8.55",
+    "tags": [32, 51, 49, 74, 20],
+    "filters": ["Anonymous"],
+    "bonus": "100% up to 200 € bonus",
+    "bonusTerms": "200 €",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Boomerang-Bet",
+    "logo": "https://placehold.co/80x80/1d4ed8/f97316.webp?text=BB",
+    "rating": "8.50",
+    "tags": [51, 49, 75, 20, 76],
+    "filters": ["Anonymous"],
+    "bonus": "100% up to 100 € first deposit bonus",
+    "bonusTerms": "100 €",
+    "country": "Germany",
+    "countryCode": "DE"
+  },
+  {
+    "name": "Vave",
+    "logo": "https://placehold.co/80x80/111827/facc15.webp?text=VAVE",
+    "rating": "7.55",
+    "tags": [77, 78, 79, 80],
+    "filters": ["Anonymous"],
+    "bonus": "100% up to 500 USDT bonus",
+    "bonusTerms": "500 USDT",
+    "country": "Germany",
+    "countryCode": "DE"
+  }
+]
