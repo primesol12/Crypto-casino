@@ -3,15 +3,21 @@
 import { useState, useMemo } from "react";
 
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { type Casino } from "@/components/CasinoCard";
+import { StructuredData } from "@/components/StructuredData";
 import casinos from "@/data/casino_cards.json";
 import { Hero, CardsLayout } from "./front-page/index";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useErrorBoundary } from "@/hooks/useErrorBoundary";
 
 const ITEMS_PER_PAGE = 6;
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [favorites, setFavorites] = useLocalStorage<Set<string>>("casino-favorites", new Set());
+  const { error, resetError } = useErrorBoundary();
 
   const filteredCasinos = useMemo(() => {
     return (casinos as Casino[]).filter((casino) => {
@@ -46,10 +52,41 @@ export default function Home() {
     });
   };
 
+  const handleFavorite = (casino: Casino) => {
+    setFavorites(prev => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(casino.name)) {
+        newFavorites.delete(casino.name);
+      } else {
+        newFavorites.add(casino.name);
+      }
+      return newFavorites;
+    });
+  };
+
+  // Error handling
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
+          <p className="text-muted-foreground mb-4">We encountered an error loading the casino data.</p>
+          <button 
+            onClick={resetError}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
+      <StructuredData casinos={casinos as Casino[]} />
       <Header />
-      <main>
+      <main className="flex-1">
         <Hero />
 
         <CardsLayout
@@ -62,8 +99,11 @@ export default function Home() {
           onPageChange={goToPage}
           activeFilter={activeFilter}
           onFilterChange={handleFilterChange}
+          onFavorite={handleFavorite}
+          favorites={favorites}
         />
       </main>
+      <Footer />
     </div>
   );
 }

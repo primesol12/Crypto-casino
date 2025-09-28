@@ -1,5 +1,6 @@
-import { Star } from "lucide-react";
+import { Star, Heart } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 import cardTagsData from "@/data/card_tags.json";
 
 type CardTag = {
@@ -21,6 +22,8 @@ export type Casino = {
 
 type CasinoCardProps = {
   casino: Casino;
+  onFavorite?: (casino: Casino) => void;
+  isFavorited?: boolean;
 };
 
 const TAG_LOOKUP = (cardTagsData.features as CardTag[]).reduce(
@@ -40,7 +43,21 @@ const TAG_STYLE_PALETTE = [
 const BASE_TAG_CLASSES =
   "relative flex items-center gap-1.5 rounded-full border bg-gradient-to-r px-3 py-1 text-xs font-semibold backdrop-blur-md transition-all";
 
-export function CasinoCard({ casino }: CasinoCardProps) {
+export function CasinoCard({ casino, onFavorite, isFavorited = false }: CasinoCardProps) {
+  const [imageError, setImageError] = useState(false);
+
+  const handleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onFavorite) {
+      onFavorite(casino);
+    }
+  };
+
+  const handleVisit = () => {
+    // Track casino visits for analytics
+    console.log(`User visited ${casino.name}`);
+    // You can add analytics tracking here
+  };
   const ratingValue = casino.rating;
   const numericRating = Number(ratingValue);
   const isNumericRating = !Number.isNaN(numericRating);
@@ -112,14 +129,37 @@ export function CasinoCard({ casino }: CasinoCardProps) {
       <div className="flex flex-col md:flex-row">
         <div className="p-6 flex-1">
           <div className="flex items-center gap-4">
-            <Image
-              src={casino.logo}
-              alt={`${casino.name} logo`}
-              width={80}
-              height={80}
-              className="h-20 w-20 rounded-md"
-              unoptimized
-            />
+            <div className="relative">
+              {imageError ? (
+                <div className="h-20 w-20 rounded-md bg-muted flex items-center justify-center">
+                  <span className="text-2xl font-bold text-muted-foreground">
+                    {casino.name[0]}
+                  </span>
+                </div>
+              ) : (
+                <Image
+                  src={casino.logo}
+                  alt={`${casino.name} logo`}
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 rounded-md"
+                  unoptimized
+                  onError={() => setImageError(true)}
+                />
+              )}
+              {onFavorite && (
+                <button
+                  onClick={handleFavorite}
+                  className="absolute -top-2 -right-2 p-1 rounded-full bg-background border border-border hover:bg-primary hover:text-primary-foreground transition-colors"
+                  aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+                  style={{ display: 'none' }} // Hidden by default
+                >
+                  <Heart 
+                    className={`h-4 w-4 ${isFavorited ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} 
+                  />
+                </button>
+              )}
+            </div>
             <div>
               <h2 className="text-2xl font-semibold">{casino.name}</h2>
               <span className={`${baseRatingClasses} ${ratingVariantClass}`}>
@@ -149,7 +189,10 @@ export function CasinoCard({ casino }: CasinoCardProps) {
 
         <div className="bg-secondary p-6 flex-1 rounded-b-lg md:rounded-r-lg md:rounded-b-none flex flex-col items-center justify-center text-center">
           <p className="text-lg font-bold text-accent">{casino.bonus}</p>
-          <button className="mt-4 w-full rounded-md bg-primary py-3 font-semibold uppercase text-primary-foreground transition-colors hover:bg-primary/90">
+          <button 
+            onClick={handleVisit}
+            className="mt-4 w-full rounded-md bg-primary py-3 font-semibold uppercase text-primary-foreground transition-colors hover:bg-primary/90"
+          >
             Visit Now
           </button>
           <p className="mt-2 text-sm text-muted-foreground">
