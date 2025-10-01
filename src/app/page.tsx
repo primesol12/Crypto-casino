@@ -16,7 +16,12 @@ const ITEMS_PER_PAGE = 6;
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [favorites, setFavorites] = useLocalStorage<Set<string>>("casino-favorites", new Set());
+  const [favoriteNamesValue, setFavoriteNames] = useLocalStorage<string[]>("casino-favorites", []);
+  const favoriteNames = useMemo(
+    () => (Array.isArray(favoriteNamesValue) ? favoriteNamesValue : []),
+    [favoriteNamesValue]
+  );
+  const favorites = useMemo(() => new Set(favoriteNames), [favoriteNames]);
   const { error, resetError } = useErrorBoundary();
 
   const filteredCasinos = useMemo(() => {
@@ -53,14 +58,12 @@ export default function Home() {
   };
 
   const handleFavorite = (casino: Casino) => {
-    setFavorites(prev => {
-      const newFavorites = new Set(prev);
-      if (newFavorites.has(casino.name)) {
-        newFavorites.delete(casino.name);
-      } else {
-        newFavorites.add(casino.name);
+    setFavoriteNames(prev => {
+      const current = Array.isArray(prev) ? prev : [];
+      if (current.includes(casino.name)) {
+        return current.filter((name) => name !== casino.name);
       }
-      return newFavorites;
+      return [...current, casino.name];
     });
   };
 
